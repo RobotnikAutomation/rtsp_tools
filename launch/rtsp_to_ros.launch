@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_id" value="$(optenv ROBOT_ID robot)"/>
+  <arg name="rtsp_resource" value="rtsp://192.168.0.186/mjpg"/>
+  <arg name="camera_name" value="camera"/>
+  <arg name="camera_frame" value="camera_link"/>
+  <arg name="desired_freq" value="10"/>
+  
+  <group ns="$(arg robot_id)">
+    <node name="rtsp_to_ros" pkg="rtsp_tools" type="rtsp_to_ros_node.py" output="screen">
+      <rosparam command="load" file="$(find rtsp_tools)/config/rtsp_to_ros.yaml" subst_value="true"/>
+      <!--remap from="~image_raw" to="~desired_image_raw"/>
+      <remap from="~camera_info" to="~desired_camera_info"/-->
+    </node>
+  </group>
+
+</launch>

@@ -1,0 +1,4 @@
+desired_freq: $(arg desired_freq)
+rtsp_resource: $(arg rtsp_resource)
+camera_name: $(arg camera_name)
+camera_frame: $(arg camera_frame)
